@@ -47,6 +47,43 @@ public class OrderedArrayList<T extends Comparable> extends ArrayListClass<T> {
         }
     }
     
+    public int binarySearch(T searchItem) {
+//        return recBinarySearch(searchItem, 0, this.length - 1);
+        
+        
+        int low = 0;
+        int high = this.length - 1;
+        int mid;
+        boolean isFound = false;
+        
+        while (low <= high) {            
+            //System.out.println("Looking for " + searchItem + " (low: " + low + "; high: " + high + ")");            
+            mid = (low + high) / 2;
+            
+            Comparable<T> compareElement = (Comparable<T>) this.list[mid];
+            int comp = compareElement.compareTo(searchItem);
+            
+            if (comp == 0) return mid;          // found it! return mid
+            else if (comp > 0) high = mid - 1;  // searchItem is greater than compareElement. search higher.
+            else low = mid + 1;                 // searchItem is less than compareElement. search lower.
+        }
+        
+        return -1;
+    }
+       
+    private int recBinarySearch(T searchItem, int low, int high) {
+        System.out.println("Looking for " + searchItem + " (low: " + low + "; high: " + high + ")");
+        if (low > high) return -1;
+        
+        int mid = (low + high) / 2;
+        Comparable<T> compareElement = (Comparable<T>) this.list[mid];
+        int comp = compareElement.compareTo(searchItem);
+        
+        if (comp == 0) return mid;
+        else if (comp > 0) return recBinarySearch(searchItem, low, mid - 1);
+        else return recBinarySearch(searchItem, mid + 1, high);
+    }
+    
     // Overrides (This is where things get interesting)
     
     @Override

@@ -9,7 +9,7 @@ package exceptions;
  *
  * @author ctcrrmcidlk
  */
-public class ListFullException extends IndexOutOfBoundsException {
+public class ListFullException extends RuntimeException {
     private static final String DEFAULT_MESSAGE = "The list is full.";
     private String message = "";
     
@@ -21,10 +21,10 @@ public class ListFullException extends IndexOutOfBoundsException {
         super(DEFAULT_MESSAGE + " " + message);
         this.message = message;
     }
-//    
-//    public ListFullException(Throwable cause) {
-//        super(cause);
-//    }
+    
+    public ListFullException(Throwable cause) {
+        super(cause);
+    }
     
     @Override
     public String toString() {

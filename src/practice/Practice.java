@@ -19,13 +19,34 @@ public class Practice {
      */
     public static void main(String[] args) {
 //        TestUnorderedArrayList();
-        TestOrderedArrayList();
+//        TestOrderedArrayList();
+        TestLinkedList();
+    }
+    
+    private static void TestLinkedList() {
+        LinkedList<Integer> alist = new LinkedList();
+        alist.insert(new Node(1));
+        alist.insert(new Node(5));
+        alist.insert(new Node(8));        
+        alist.print();
+        
+        alist.insertAt(new Node(2), 1);        
+        alist.print();
+        
+        alist.removeAt(1);        
+        alist.print();
+        
+        System.out.println("item at 1: " + alist.getItem(1));
+        
+        alist.clearList();
+        alist.print();
+        
     }
         
     private static void TestOrderedArrayList() {
         OrderedArrayList<Integer> alist = new OrderedArrayList();
         
-        for (int i = 1; i < 101; ++i) {
+        for (int i = 1; i < 100; ++i) {
             int newItem = (int)Math.round(Math.random() * 255.0);
             alist.insert(newItem);
         }
@@ -33,6 +54,13 @@ public class Practice {
         
         alist.removeDuplicates();
         alist.print();
+                
+        alist.print();        
+        System.out.println("looking for 90. found it at " + alist.binarySearch(90));
+        
+        int searchItem = alist.getItem(44);
+        alist.print();        
+        System.out.println("looking for " + searchItem + ". found it at " + alist.binarySearch(searchItem));
         
 //        alist.insert(1);
 //        alist.insert(4);

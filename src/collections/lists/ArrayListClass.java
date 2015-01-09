@@ -144,23 +144,11 @@ public abstract class ArrayListClass<T extends Comparable> implements Cloneable 
     // override methods
     @Override
     public Object clone() { 
-        // commented out because I'm making this an abstract class
-        // ArrayListClass<T> clone() {
-//        ArrayListClass<T> newObj = new ArrayListClass(this.maxSize);
-//        
-//        for(T elem: this.list) {
-//            if (elem != null) {
-//                newObj.insertEnd(elem);
-//            }
-//        }
-//        
-//        Debug.println("Cloned ArrayListClass. length: " + newObj.size() + "; maxSize: " + newObj.maxSize());
-//        return newObj;
         Object newObj = null;
         try {
             newObj = super.clone();
         } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(ArrayListClass.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
         }
         return newObj;
     }
