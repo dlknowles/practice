@@ -180,6 +180,27 @@ public class LinkedList<T extends Comparable> implements Cloneable {
         System.out.println();
     }
     
+    public void sort() {
+        if (this.length < 8) {
+            insertionSort();
+        }
+        else {
+            mergeSort();
+        }
+    }
+    
+    private void insertionSort() {
+        
+    }
+    
+    private void mergeSort() {
+        
+    }
+    
+    private void quickSort() {
+        
+    }
+    
     // overrides
     @Override
     public Object clone() { 

@@ -7,8 +7,6 @@ package collections.lists;
 
 import utilities.*;
 import exceptions.ListFullException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -107,6 +105,41 @@ public abstract class ArrayListClass<T extends Comparable> implements Cloneable 
         return index;
     }
     
+    
+    public void sort() {
+        if (this.length < 8) {
+            insertionSort();
+        }
+        else {
+            quickSort();
+        }
+    }
+    
+    protected void insertionSort() {
+        for (int i = 1; i < this.length; ++i) {
+            T n = this.list[i];
+            
+            for (int j = 0; j < i; ++j) {
+                if (n.compareTo(this.list[j]) < 0) {
+                    for (int k = i - 1; k >= j; --k) {
+                        this.list[k + 1] = this.list[k];
+                    }
+                    
+                    this.list[j] = n;
+                    break;
+                }
+            }
+        }
+    }
+    
+    protected void mergeSort() {
+        
+    }
+    
+    protected void quickSort() {
+        
+    }
+        
     // protected methods    
     protected void replaceAt(T item, int index) throws ArrayIndexOutOfBoundsException {
         if (index >= this.length) throw new ArrayIndexOutOfBoundsException(index);
