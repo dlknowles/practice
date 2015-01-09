@@ -6,6 +6,7 @@
 package practice;
 
 import utilities.*;
+import collections.lists.*;
 
 /**
  *
@@ -17,52 +18,98 @@ public class Practice {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        TestArrayListClass();
+//        TestUnorderedArrayList();
+        TestOrderedArrayList();
+    }
+        
+    private static void TestOrderedArrayList() {
+        OrderedArrayList<Integer> alist = new OrderedArrayList();
+        
+        for (int i = 1; i < 101; ++i) {
+            int newItem = (int)Math.round(Math.random() * 255.0);
+            alist.insert(newItem);
+        }
+        alist.print();
+        
+        alist.removeDuplicates();
+        alist.print();
+        
+//        alist.insert(1);
+//        alist.insert(4);
+//        alist.insert(3);
+//        alist.insert(4);
+//        alist.insert(5);
+//        alist.insert(6);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.insert(2);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.remove(4);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.remove(1);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.remove(6);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.removeAt(0);        
+//        Debug.println("printing alist...");
+//        alist.print();
+//        
+//        alist.removeAt(2);        
+//        Debug.println("printing alist...");
+//        alist.print();
         
     }
     
-    private static void TestArrayListClass() {
-        // cannot do this anymore since i made that class an abstract base class
-//        ArrayListClass<Integer> alist = new ArrayListClass(6);
-//        
-//        alist.insertEnd(1);
-//        alist.insertEnd(2);
-//        alist.insertEnd(3);
-//        alist.insertEnd(4);
-//        alist.insertEnd(5);
-//        alist.insertEnd(6);        
-//        Debug.println("printing alist...");
-//        alist.print();
-//        
-//        alist.removeAt(4);
-//        Debug.println("printing alist...");
-//        alist.print();
-//        
-//        alist.insertEnd(20);
-//        Debug.println("printing alist...");
-//        alist.print();
-//        
-//        alist.replaceAt(5, 5);
-//        Debug.println("printing alist...");
-//        alist.print();
-//        
+    private static void TestUnorderedArrayList() {
+        UnorderedArrayList<Integer> alist = new UnorderedArrayList();
+        
+        alist.insert(1);
+        alist.insert(2);
+        alist.insert(3);
+        alist.insert(4);
+        alist.insert(5);
+        alist.insert(6);        
+        Debug.println("printing alist...");
+        alist.print();
+        
+        alist.removeAt(4);
+        Debug.println("printing alist...");
+        alist.print();
+        
+        alist.insert(20);
+        Debug.println("printing alist...");
+        alist.print();
+        
+        alist.replaceAt(5, 5);
+        Debug.println("printing alist...");
+        alist.print();
+        
 //        alist.clearList();
 //        Debug.println("printing alist...");
 //        alist.print();
         
-//        alist.insertAt(20, 4);
-//        Debug.print("printing alist...");
-//        alist.print();
-//        
-//        ArrayListClass<Integer> blist;
-//        
-//        blist = alist.clone();
-//        Debug.print("printing blist...");
-//        blist.print();
-//        blist.insertEnd(Integer.SIZE);
-//        Debug.print("printing alist...");
-//        alist.print();
-//        Debug.print("printing blist...");
-//        blist.print();
+        alist.insertAt(20, 4);
+        Debug.print("printing alist...");
+        alist.print();
+        
+        UnorderedArrayList<Integer> blist;
+        
+        blist = (UnorderedArrayList<Integer>) alist.clone();
+        Debug.print("printing blist...");
+        blist.print();
+        blist.insert(Integer.SIZE);
+        Debug.print("printing alist...");
+        alist.print();
+        Debug.print("printing blist...");
+        blist.print();
     }
 }
