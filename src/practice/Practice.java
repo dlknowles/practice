@@ -18,9 +18,35 @@ public class Practice {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestUnorderedArrayList();
+        int[] nums = {8, 8, 8, 9, 9, 11, 15, 16, 16, 16};
+        int[] counts = NumberHelper.getCounts(nums);
+        
+        for (int i = 0; i < counts.length; ++i) {
+            if (counts[i] > 0) {
+                System.out.println(i + ": " + counts[i]);
+            }
+        }
+//        TestBinTree();
+//        TestUnorderedArrayList();
 //        TestOrderedArrayList();
 //        TestLinkedList();
+    }
+    
+    private static void TestBinTree() {
+        BTNode<Integer> root = new BTNode(20);
+        
+        root.setLeft(new BTNode<Integer>(15));
+        root.setRight(new BTNode<Integer>(34));
+        
+        root.getLeft().setLeft(new BTNode<Integer>(10));
+        root.getLeft().setRight(new BTNode<Integer>(17));
+        
+        root.getRight().setLeft(new BTNode<Integer>(25));
+        root.getRight().setRight(new BTNode<Integer>(40));
+        
+        BinaryTree<Integer> t = new BinaryTree(root);
+        
+        t.printBFS();
     }
     
     private static void TestLinkedList() {
