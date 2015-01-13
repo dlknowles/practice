@@ -7,6 +7,7 @@ package practice;
 
 import utilities.*;
 import collections.lists.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,35 +19,64 @@ public class Practice {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int[] nums = {8, 8, 8, 9, 9, 11, 15, 16, 16, 16};
-        int[] counts = NumberHelper.getCounts(nums);
-        
-        for (int i = 0; i < counts.length; ++i) {
-            if (counts[i] > 0) {
-                System.out.println(i + ": " + counts[i]);
-            }
-        }
+        TestPoint2D();
+//        int[] nums = {8, 8, 8, 9, 9, 11, 15, 16, 16, 16};
+//        int[] counts = NumberHelper.getCounts(nums);
+//        
+//        for (int i = 0; i < counts.length; ++i) {
+//            if (counts[i] > 0) {
+//                System.out.println(i + ": " + counts[i]);
+//            }
+//        }
 //        TestBinTree();
 //        TestUnorderedArrayList();
 //        TestOrderedArrayList();
 //        TestLinkedList();
+        
+//        TestChop();
+    }
+    
+    private static void TestPoint2D() {
+        Point2D[] points = {
+            new Point2D(-2, -4),
+            new Point2D(0, 0),
+            new Point2D(10, 15),
+            new Point2D(5, 6),
+            new Point2D(7, 8),
+            new Point2D(-10, -30)
+        };
+        
+        ArrayList<Point2D> closest = Point2D.getClosest(new Point2D(5, 5), points, 2);
+        
+        for (Point2D p: closest) {
+            System.out.print(p.toString() + " ");
+        }
+        System.out.println();
     }
     
     private static void TestBinTree() {
-        BTNode<Integer> root = new BTNode(20);
+        BTNode<Integer> root = new BTNode(1);
         
-        root.setLeft(new BTNode<Integer>(15));
-        root.setRight(new BTNode<Integer>(34));
+        root.setLeft(new BTNode<Integer>(2));
+        root.setRight(new BTNode<Integer>(3));
         
-        root.getLeft().setLeft(new BTNode<Integer>(10));
-        root.getLeft().setRight(new BTNode<Integer>(17));
+        root.getLeft().setLeft(new BTNode<Integer>(4));
+        root.getLeft().setRight(new BTNode<Integer>(5));
         
-        root.getRight().setLeft(new BTNode<Integer>(25));
-        root.getRight().setRight(new BTNode<Integer>(40));
+        root.getRight().setLeft(new BTNode<Integer>(6));
+        root.getRight().setRight(new BTNode<Integer>(7));
+        
+//        root.getLeft().getLeft().setLeft(new BTNode<Integer>(8));
+        
         
         BinaryTree<Integer> t = new BinaryTree(root);
         
-        t.printBFS();
+        t.printLevels();
+        
+//        t.printBFS();
+        
+//        t.DFTraversal(root);
+//        System.out.println("Height: " + t.GetHeight());
     }
     
     private static void TestLinkedList() {
@@ -169,4 +199,24 @@ public class Practice {
 //        Debug.print("printing blist...");
 //        blist.print();
     }
+   
+    static void TestChop() {
+        int[] ar = {1, 3, 5};
+        
+        System.out.println("testing iterative binary search");
+        System.out.println(BinaryChop.iterChop(0, ar));
+        System.out.println(BinaryChop.iterChop(1, ar));
+        System.out.println(BinaryChop.iterChop(3, ar));
+        System.out.println(BinaryChop.iterChop(5, ar));
+        System.out.println(BinaryChop.iterChop(6, ar));
+        
+        System.out.println("\ntesting recursive binary search");        
+        System.out.println(BinaryChop.recChop(0, ar, 0, ar.length - 1));
+        System.out.println(BinaryChop.recChop(1, ar, 0, ar.length - 1));
+        System.out.println(BinaryChop.recChop(3, ar, 0, ar.length - 1));
+        System.out.println(BinaryChop.recChop(5, ar, 0, ar.length - 1));
+        System.out.println(BinaryChop.recChop(6, ar, 0, ar.length - 1));
+    }
+        
+    
 }
