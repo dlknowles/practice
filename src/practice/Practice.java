@@ -19,7 +19,8 @@ public class Practice {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestPoint2D();
+        TestMissing();
+//        TestPoint2D();
 //        int[] nums = {8, 8, 8, 9, 9, 11, 15, 16, 16, 16};
 //        int[] counts = NumberHelper.getCounts(nums);
 //        
@@ -34,6 +35,17 @@ public class Practice {
 //        TestLinkedList();
         
 //        TestChop();
+    }
+    
+    private static void TestMissing() {
+        int ar[] = {1, 2, 4, 6, 7, 8, 9};
+        int missing[] = NumberHelper.getMissingBruteForce(9, ar);
+        
+        for (int i: missing) {
+            System.out.print(i + " ");
+        }
+        
+        System.out.println();
     }
     
     private static void TestPoint2D() {

@@ -30,4 +30,29 @@ public class NumberHelper {
         }
     }
     
+    public static int[] getMissingBruteForce(int len, int[] ar) {
+        int missingLen = len - ar.length;
+        int[] missing = new int[missingLen];
+        int missingCount = 0;        
+        int arCount = 0;
+        
+        if (missingLen == 0) return new int[0];
+        
+        for (int i = 0; i < len; ++i) {
+            if (arCount > ar.length - 1) {
+                missing[missingCount++] = (i + 1);
+            }
+            else 
+            {
+                if (ar[arCount] != (i + 1)) {
+                    missing[missingCount++] = (i + 1);
+                }
+                else {
+                    ++arCount;
+                }
+            }
+        }
+        
+        return missing;
+    }
 }
