@@ -83,6 +83,7 @@ public class util {
     }
     
     private static long CountSplitInversions(int[] ar, int[] aux, int lo, int mid, int hi) {
+        //System.out.println("CountSplitInversions - lo: " + lo + "; mid: " + mid + "; hi: " + hi);
         int i = lo;
         int j = mid + 1;
         long count = 0;
@@ -96,9 +97,13 @@ public class util {
                 aux[k] = ar[i++];
             } else {
 //                System.out.println("adding to count; mid: " + mid + "; i: " + i);
+//                for (int n = i; n <= mid; ++n) {
+//                    System.out.print(aux[n] + " ");
+//                }
+//                System.out.println();
                 aux[k] = ar[j++];
                 if (mid >= i) {
-                    count += 1;// mid - i + 1;     // add number of items remaining in the left side of the array
+                    count += mid - i + 1;     // add number of items remaining in the left side of the array
                 }
             }
         }
@@ -159,16 +164,12 @@ public class util {
         int p = ar[hi];
         int i = lo;
         int j = hi - 1;
-        
-        if (i >= j) {
-            return i;
-        }
-        
+        //System.out.println("p: " + p);        
         while (i < j) {
-            while (ar[i] <= p) {
+            while (i < hi && ar[i] <= p) {
                 ++i;
             }
-            while (ar[j] > p) {
+            while (j > lo && ar[j] > p) {
                 --j;
             }
             if (i < j) {
@@ -176,9 +177,25 @@ public class util {
             }
         }
         
-        swap(ar, i, hi);
+        if (i < hi && ar[i] > p) {    
+            swap(ar, i, hi);
+        } 
         
         return i;
+    }
+    
+    // select the k-th smallest int (zero based) in an array
+    public static int select (int[] a, int k) {
+        System.out.println("finding kth smallest int (" + k + ")");
+        int lo = 0;
+        int hi = a.length - 1;
+        while (hi > lo) {
+            int j = Partition(a, lo, hi);
+            if (j == k) return a[k];
+            else if (j > k) hi = j - 1;
+            else if (j < k) lo = j + 1;
+        }
+        return a[k];
     }
     
     private static void swap(int[] ar, int a, int b) {
