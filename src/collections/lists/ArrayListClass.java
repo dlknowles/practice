@@ -107,38 +107,32 @@ public abstract class ArrayListClass<T extends Comparable> implements Cloneable 
     
     
     public void sort() {
-        if (this.length < 8) {
+        //if (this.length < 8) {
             insertionSort();
-        }
-        else {
-            quickSort();
-        }
+        //}
+        //else {
+        //    quickSort();
+        //}
     }
     
     protected void insertionSort() {
         for (int i = 1; i < this.length; ++i) {
             T n = this.list[i];
             
-            for (int j = 0; j < i; ++j) {
-                if (n.compareTo(this.list[j]) < 0) {
-                    for (int k = i - 1; k >= j; --k) {
-                        this.list[k + 1] = this.list[k];
-                    }
-                    
-                    this.list[j] = n;
-                    break;
-                }
+            int j = i - 1;
+            while (j > -1 && n.compareTo(this.list[j]) < 0) {
+                this.list[j + 1] = this.list[j];
+                --j;
             }
+            this.list[j + 1] = n;
         }
     }
     
-    protected void mergeSort() {
-        
-    }
     
-    protected void quickSort() {
-        
-    }
+//    
+//    protected void quickSort() {
+//        
+//    }
         
     // protected methods    
     protected void replaceAt(T item, int index) throws ArrayIndexOutOfBoundsException {

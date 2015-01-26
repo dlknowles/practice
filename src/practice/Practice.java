@@ -19,9 +19,17 @@ public class Practice {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestMissing();
+//        TestMissing();
 //        TestPoint2D();
 //        int[] nums = {8, 8, 8, 9, 9, 11, 15, 16, 16, 16};
+//        int[] nums = {1, 3, 5, 2, 4, 6};
+//        int[] nums = {2, 1, 3, 4, 6, 5};
+        int[] nums = {1,6,3,2,4,5}; // should be 5 -- getting 7... // util.getIntArrayFromFile("D:\\dev\\java\\practice\\src\\small.txt");
+        
+        util.PrintArray(nums);
+        //System.out.println("inversions: " + util.CountInversions(nums));
+        util.QuickSort(nums);
+        util.PrintArray(nums);
 //        int[] counts = NumberHelper.getCounts(nums);
 //        
 //        for (int i = 0; i < counts.length; ++i) {
